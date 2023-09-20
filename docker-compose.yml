@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  config-container:
+    build:
+      context: .
+      dockerfile: ./config-container/Dockerfile
+    hostname: config-container
+    volumes:
+      - shared-data:/shared-volume
+
+  application-container:
+    build:
+      context: .
+      dockerfile: ./application-container/Dockerfile
+    hostname: application-container
+    depends_on:
+      - config-container
+    volumes:
+      - shared-data:/shared-volume
+
+volumes:
+  shared-data:
