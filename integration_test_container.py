@@ -122,10 +122,12 @@ def test_container_logs(container_logs):
         expected_message_four
     ]
 
-    error_processing_data = "Config Value not found in environment variables."
+    error_decoding = "Error decoding JSON in configuration file"
+    error_no_file = "Configuration file"
 
     error_exceptions_messages = [
-        error_processing_data
+        error_decoding,
+        error_no_file
     ]
 
     # Check if any of the expected messages are present in the logs
